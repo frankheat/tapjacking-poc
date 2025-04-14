@@ -1,0 +1,29 @@
+<!-- res/layout/overlay_partial_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF0000"
+    android:gravity="center">
+
+    <!-- Overlay Text -->
+    <TextView
+        android:id="@+id/overlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overlay Partial"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"/>
+
+    <!-- Close button -->
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#3F51B5"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

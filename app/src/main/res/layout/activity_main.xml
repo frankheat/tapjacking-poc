@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2E2E2E">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- SECTION 1 -->
+        <TextView android:text="Choose the opening method:"
+            android:textStyle="bold"
+            android:textColor="#ff0000"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioGroup
+            android:id="@+id/launchOptionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/radioStartActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#ff0000"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:text="Start activity"/>
+            <RadioButton
+                android:id="@+id/radioDeepLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp"
+                android:text="Deep link"/>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/inputPackage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Package name"
+            android:textColorHint="#9E9E9E"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/inputActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Activity name"
+            android:textColorHint="#9E9E9E"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/inputDeepLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deep link"
+            android:textColorHint="#9E9E9E"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"/>
+
+        <!-- SECTION 2 -->
+        <TextView android:text="Choose overlay type:"
+            android:textStyle="bold"
+            android:textColor="#ff0000"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/overlayOptionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/radioFull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp"
+                android:text="FULL"/>
+            <RadioButton
+                android:id="@+id/radioPartial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFFFF"
+                android:textSize="18sp"
+                android:text="PARTIAL"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/partialSizeLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/inputHeight"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Height"
+                android:textColorHint="#9E9E9E"
+                android:textColor="#FFFFFF"/>
+
+            <EditText
+                android:id="@+id/inputWidth"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Width"
+                android:textColorHint="#9E9E9E"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- SECTION 3 -->
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="START"
+            android:backgroundTint="#ef3b24"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="STOP THE OVERLAY"
+            android:backgroundTint="#3F51B5"
+            android:layout_marginTop="30dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>
