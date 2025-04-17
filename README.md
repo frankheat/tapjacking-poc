@@ -40,7 +40,7 @@ This Android application is a **proof-of-concept** demonstrating **tapjacking** 
 git clone https://github.com/frankheat/tapjacking-poc.git
 ```
 2. Open the project in Android Studio.
-3. Build and install the app on a physical device (minSdk 26 - Android 8.0+).
+3. Build and install the app on a device (minSdk 26 - Android 8.0+).
 
 
 # 🧪 Operation Modes
