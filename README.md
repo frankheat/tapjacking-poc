@@ -15,15 +15,15 @@ This Android application is a **proof-of-concept** demonstrating **tapjacking** 
 ## 📸 Screenshots
 
 <div align="center">
-    <img src="screenshots/screenshot_1.png" alt="Screenshot" width="300"/>
+    <img src="screenshots/screenshot_1.png" alt="Screenshot" width="200"/>
     <p><em>Main screen</em></p>
 </div>
 
 <br>
 
 <div align="center">
-    <img src="screenshots/screenshot_2.png" alt="Screenshot" width="300"/>
-    <img src="screenshots/screenshot_3.png" alt="Screenshot" width="300"/>
+    <img src="screenshots/screenshot_2.png" alt="Screenshot" width="200"/>
+    <img src="screenshots/screenshot_3.png" alt="Screenshot" width="200"/>
     <p><em>Screenshot showing the full & the partial overlay in action</em></p>
 </div>
 
