@@ -43,7 +43,7 @@ git clone https://github.com/frankheat/tapjacking-poc.git
 3. Build and install the app on a device (minSdk 26 - Android 8.0+).
 
 
-# Operation Modes
+## Operation Modes
 ### Target Launch Options
 - **Start Activity**: Provide a target app's package and full activity class name.
 - **Deep Link**: Provide a URI to launch.
@@ -53,5 +53,5 @@ git clone https://github.com/frankheat/tapjacking-poc.git
 - **Partial**: Launches a partial overlay.
 
 
-# Required Permissions
+## Required Permissions
 This app requires the **SYSTEM_ALERT_WINDOW** permission ("Draw over other apps").
