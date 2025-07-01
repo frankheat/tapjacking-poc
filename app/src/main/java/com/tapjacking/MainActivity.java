@@ -1,5 +1,6 @@
 package com.tapjacking;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -69,19 +70,29 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                String pkg = inputPackage.getText().toString();
-                String act = inputActivity.getText().toString();
-                String link = inputDeepLink.getText().toString();
+                String pkg = inputPackage.getText().toString().trim();
+                String act = inputActivity.getText().toString().trim();
+                String link = inputDeepLink.getText().toString().trim();
 
                 if (radioStartActivity.isChecked()) {
                     Intent intent = new Intent();
                     intent.setClassName(pkg, act);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(this, "Unable to start the requested activity.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 } else if (radioDeepLink.isChecked()) {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(this, "Unable to start the deep link.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
 
                 // Full-screen overlay service start-up
