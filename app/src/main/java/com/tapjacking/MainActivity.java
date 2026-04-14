@@ -11,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText inputPackage, inputActivity, inputDeepLink, inputHeight, inputWidth;
-    private LinearLayout partialSizeLayout;
+    private EditText inputPackage, inputActivity, inputDeepLink;
     private RadioButton radioStartActivity, radioDeepLink, radioFull, radioPartial;
 
     @Override
@@ -30,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         inputPackage = findViewById(R.id.inputPackage);
         inputActivity = findViewById(R.id.inputActivity);
         inputDeepLink = findViewById(R.id.inputDeepLink);
-        inputHeight = findViewById(R.id.inputHeight);
-        inputWidth = findViewById(R.id.inputWidth);
-        partialSizeLayout = findViewById(R.id.partialSizeLayout);
 
         // Start Activity / Deep Link option
         RadioGroup launchOptionGroup = findViewById(R.id.launchOptionGroup);
@@ -45,16 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 inputPackage.setVisibility(View.GONE);
                 inputActivity.setVisibility(View.GONE);
                 inputDeepLink.setVisibility(View.VISIBLE);
-            }
-        });
-
-        // FULL / PARTIAL
-        RadioGroup overlayOptionGroup = findViewById(R.id.overlayOptionGroup);
-        overlayOptionGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.radioPartial) {
-                partialSizeLayout.setVisibility(View.VISIBLE);
-            } else {
-                partialSizeLayout.setVisibility(View.GONE);
             }
         });
 
@@ -95,54 +81,39 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // Full-screen overlay service start-up
                 if (radioFull.isChecked()) {
-                    Intent overlayServiceIntent = new Intent(this, OverlayService.class);
-                    startService(overlayServiceIntent);
+                    startService(new Intent(this, OverlayService.class));
                     btnStop.setVisibility(View.VISIBLE);
                 }
 
-                // Partial overlay service start-up
                 if (radioPartial.isChecked()) {
-                    int heightPercent = Integer.parseInt(inputHeight.getText().toString());
-                    int widthPercent = Integer.parseInt(inputWidth.getText().toString());
-
-                    Intent partialOverlayIntent = new Intent(this, PartialOverlayService.class);
-                    partialOverlayIntent.putExtra("height", heightPercent);
-                    partialOverlayIntent.putExtra("width", widthPercent);
-                    startService(partialOverlayIntent);
+                    startService(new Intent(this, SelectionOverlayService.class));
                 }
-
             }
         });
 
         // Stop button
         btnStop.setOnClickListener(v -> {
             stopService(new Intent(getApplicationContext(), OverlayService.class));
+            stopService(new Intent(getApplicationContext(), PartialOverlayService.class));
+            stopService(new Intent(getApplicationContext(), SelectionOverlayService.class));
             btnStop.setVisibility(View.GONE);
         });
     }
 
-
     private boolean checkFields() {
         boolean firstStep = false;
-        boolean secondStep = false;
 
-        if (radioStartActivity.isChecked() && !(inputPackage.getText().toString().isEmpty() || inputActivity.getText().toString().isEmpty()) ) {
+        if (radioStartActivity.isChecked()
+                && !inputPackage.getText().toString().isEmpty()
+                && !inputActivity.getText().toString().isEmpty()) {
             firstStep = true;
         } else if (radioDeepLink.isChecked() && !inputDeepLink.getText().toString().isEmpty()) {
             firstStep = true;
         }
 
-        if (radioFull.isChecked()) {
-            secondStep = true;
-        } else if (radioPartial.isChecked()) {
-            if (!inputHeight.getText().toString().isEmpty() && !inputWidth.getText().toString().isEmpty()) {
-                secondStep = true;
-            }
-        }
+        boolean secondStep = radioFull.isChecked() || radioPartial.isChecked();
 
         return firstStep && secondStep;
     }
 }
-

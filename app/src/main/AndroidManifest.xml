@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
     <application
         android:allowBackup="true"
@@ -17,11 +19,20 @@
         <service
             android:name=".PartialOverlayService"
             android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="specialUse"></service>
+        <service
+            android:name=".SelectionOverlayService"
+            android:enabled="true"
             android:exported="true"></service>
         <service
             android:name=".OverlayService"
             android:enabled="true"
             android:exported="true" />
+
+        <receiver
+            android:name=".StopOverlayReceiver"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

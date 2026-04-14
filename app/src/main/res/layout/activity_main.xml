@@ -94,32 +94,6 @@
                 android:text="PARTIAL"/>
         </RadioGroup>
 
-        <LinearLayout
-            android:id="@+id/partialSizeLayout"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <EditText
-                android:id="@+id/inputHeight"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="Height"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#FFFFFF"/>
-
-            <EditText
-                android:id="@+id/inputWidth"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="Width"
-                android:textColorHint="#9E9E9E"
-                android:textColor="#FFFFFF"/>
-        </LinearLayout>
-
         <!-- SECTION 3 -->
         <Button
             android:id="@+id/btnStart"
@@ -133,7 +107,7 @@
             android:id="@+id/btnStop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="STOP THE OVERLAY"
+            android:text="STOP FULL OVERLAY"
             android:backgroundTint="#3F51B5"
             android:layout_marginTop="30dp"
             android:visibility="gone"/>
