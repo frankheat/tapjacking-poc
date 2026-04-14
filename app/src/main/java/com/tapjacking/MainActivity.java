@@ -1,13 +1,17 @@
 package com.tapjacking;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        requestNotificationPermission();
 
         radioStartActivity = findViewById(R.id.radioStartActivity);
         radioDeepLink = findViewById(R.id.radioDeepLink);
@@ -109,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
             stopService(new Intent(getApplicationContext(), SelectionOverlayService.class));
             btnStop.setVisibility(View.GONE);
         });
+    }
+
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
+        }
     }
 
     private boolean checkFields() {
