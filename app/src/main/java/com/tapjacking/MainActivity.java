@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText inputPackage, inputActivity, inputDeepLink;
     private RadioButton radioStartActivity, radioDeepLink, radioFull, radioPartial;
+    private Button btnBrowse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         inputPackage = findViewById(R.id.inputPackage);
         inputActivity = findViewById(R.id.inputActivity);
         inputDeepLink = findViewById(R.id.inputDeepLink);
+        btnBrowse = findViewById(R.id.btnBrowse);
 
         // Start Activity / Deep Link option
         RadioGroup launchOptionGroup = findViewById(R.id.launchOptionGroup);
@@ -36,13 +38,21 @@ public class MainActivity extends AppCompatActivity {
             if (checkedId == R.id.radioStartActivity) {
                 inputPackage.setVisibility(View.VISIBLE);
                 inputActivity.setVisibility(View.VISIBLE);
+                btnBrowse.setVisibility(View.VISIBLE);
                 inputDeepLink.setVisibility(View.GONE);
             } else {
                 inputPackage.setVisibility(View.GONE);
                 inputActivity.setVisibility(View.GONE);
+                btnBrowse.setVisibility(View.GONE);
                 inputDeepLink.setVisibility(View.VISIBLE);
             }
         });
+
+        // Browse button
+        btnBrowse.setOnClickListener(v -> new AppPickerDialog(this, (pkg, act) -> {
+            inputPackage.setText(pkg);
+            inputActivity.setText(act);
+        }).show());
 
         // START button
         btnStart.setOnClickListener(v -> {

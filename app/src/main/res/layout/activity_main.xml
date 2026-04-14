@@ -56,6 +56,14 @@
             android:textColor="#FFFFFF"
             android:visibility="gone"/>
 
+        <Button
+            android:id="@+id/btnBrowse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Browse installed apps"
+            android:backgroundTint="#555555"
+            android:visibility="gone"/>
+
         <EditText
             android:id="@+id/inputDeepLink"
             android:layout_width="match_parent"
