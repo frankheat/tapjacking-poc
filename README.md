@@ -10,21 +10,19 @@ This Android application is a **proof-of-concept** demonstrating **tapjacking** 
 - Launch any activity via **package name** and **activity class name**.
 - Trigger an app using a **deep link URI**.
 - Display a **full-screen overlay**.
-- Display a **partial overlay** with custom width and height.
+- Display a **partial overlay**.
 
 ## Screenshots
 
 <div align="center">
     <img src="screenshots/screenshot_1.png" alt="Screenshot" width="200"/>
-    <p><em>Main screen</em></p>
+    <img src="screenshots/screenshot_2.png" alt="Full overlay" width="200"/>
+    <p><em>Main screen &nbsp;|&nbsp; Full overlay</em></p>
 </div>
 
-<br>
-
 <div align="center">
-    <img src="screenshots/screenshot_2.png" alt="Screenshot" width="200"/>
-    <img src="screenshots/screenshot_3.png" alt="Screenshot" width="200"/>
-    <p><em>Screenshot showing the full & the partial overlay in action</em></p>
+    <img src="screenshots/screencast.gif" alt="Partial overlay" width="200"/>
+    <p><em>Partial overlay</em></p>
 </div>
 
 
