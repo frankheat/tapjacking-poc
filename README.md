@@ -7,10 +7,10 @@ This Android application is a **proof-of-concept** demonstrating **tapjacking** 
 
 ## Features
 
-- Launch any activity via **package name** and **activity class name**.
+- Launch any activity via **package name** and **activity class name**, or browse installed apps directly.
 - Trigger an app using a **deep link URI**.
 - Display a **full-screen overlay**.
-- Display a **partial overlay**.
+- Display a **partial overlay** that covers the entire screen except a user-defined area, leaving a target button exposed and clickable.
 
 ## Screenshots
 
@@ -43,13 +43,15 @@ git clone https://github.com/frankheat/tapjacking-poc.git
 
 ## Operation Modes
 ### Target Launch Options
-- **Start Activity**: Provide a target app's package and full activity class name.
+- **Start Activity**: Provide a target app's package and full activity class name, or use the **Browse** button to pick from the list of installed apps and their exported activities.
 - **Deep Link**: Provide a URI to launch.
 
 ### Overlay Options
-- **Full**: Launches a fullscreen overlay.
-- **Partial**: Launches a partial overlay.
+- **Full**: Launches a fullscreen semi-transparent overlay over the target app.
+- **Partial**: Opens an interactive selection screen over the target app. Tap two corners to define the area to leave exposed, then confirm. Four opaque overlays are placed around the selected area, covering the rest of the screen while leaving the target button visible and clickable.
 
 
 ## Required Permissions
-This app requires the **SYSTEM_ALERT_WINDOW** permission ("Draw over other apps").
+- **SYSTEM_ALERT_WINDOW** ("Draw over other apps"): required to display overlays. The app redirects to the system settings page if not yet granted.
+- **POST_NOTIFICATIONS** (Android 13+): required to show the persistent notification with the Stop action for the partial overlay.
+- **QUERY_ALL_PACKAGES**: required to browse the full list of installed apps.
